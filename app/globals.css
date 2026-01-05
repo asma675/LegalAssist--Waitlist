@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: #f7f4ff;
+}
+
+html, body { height: 100%; }
+body {
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(123,114,255,0.18), transparent 60%),
+              radial-gradient(1000px 700px at 85% 30%, rgba(90,67,255,0.14), transparent 55%),
+              var(--bg);
+  color: #0f172a;
+}
+* { -webkit-tap-highlight-color: transparent; }
