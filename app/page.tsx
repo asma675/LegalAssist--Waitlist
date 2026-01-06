@@ -14,8 +14,11 @@ const screens = [
   { src: "/screens/app-7.png", title: "LegalAssist screen 7" },
 ];
 
-// ✅ Your YouTube link: https://youtu.be/HTjIDlD48Qo
+// ✅ Your YouTube link
 const YT_EMBED_URL = "https://www.youtube.com/embed/HTjIDlD48Qo";
+
+// ✅ Your Google Form waitlist link (opens in new tab)
+const WAITLIST_FORM_URL = "https://forms.gle/tCmgmxyvCxLms7Nb7";
 
 export default function Page() {
   return (
@@ -120,7 +123,9 @@ export default function Page() {
 
             <div className="ml-auto flex items-center gap-3">
               <a
-                href="#waitlist"
+                href={WAITLIST_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-xl bg-gradient-to-r from-ink-600 to-ink-800 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95"
               >
                 Join Waitlist
@@ -163,10 +168,12 @@ export default function Page() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="#waitlist"
+                  href={WAITLIST_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:opacity-95"
                 >
-                  Get Early Access
+                  Join Waitlist
                 </a>
                 <a
                   href="#demo"
@@ -242,7 +249,7 @@ export default function Page() {
             </div>
           </section>
 
-          {/* ✅ Demo Video (UPDATED with your YouTube embed) */}
+          {/* Demo Video */}
           <section id="demo" className="rounded-[28px] border border-white/50 bg-white/70 p-6 shadow-soft backdrop-blur md:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Demo video</h2>
             <p className="mt-2 text-sm text-slate-600">
@@ -314,7 +321,9 @@ export default function Page() {
                   <li>• Community support</li>
                 </ul>
                 <a
-                  href="#waitlist"
+                  href={WAITLIST_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-6 inline-flex w-full items-center justify-center rounded-2xl border border-ink-200 bg-white/70 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white"
                 >
                   Join Waitlist
@@ -339,7 +348,9 @@ export default function Page() {
                   <li>• Priority support</li>
                 </ul>
                 <a
-                  href="#waitlist"
+                  href={WAITLIST_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-ink-600 to-ink-800 px-4 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95"
                 >
                   Get Early Access
@@ -358,7 +369,9 @@ export default function Page() {
                   <li>• Custom integrations</li>
                 </ul>
                 <a
-                  href="#waitlist"
+                  href={WAITLIST_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-6 inline-flex w-full items-center justify-center rounded-2xl border border-ink-200 bg-white/70 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white"
                 >
                   Request Firm Access
@@ -399,10 +412,7 @@ export default function Page() {
                   a: "Invites roll out in batches. Join the waitlist and we’ll email you when early access opens for your segment.",
                 },
               ].map((item) => (
-                <details
-                  key={item.q}
-                  className="group rounded-3xl border border-white/60 bg-white/60 p-5 backdrop-blur"
-                >
+                <details key={item.q} className="group rounded-3xl border border-white/60 bg-white/60 p-5 backdrop-blur">
                   <summary className="cursor-pointer list-none text-sm font-semibold text-slate-900">
                     <span className="mr-2 inline-block rounded-lg bg-ink-600/10 px-2 py-1 text-xs font-semibold text-ink-800">
                       Q
@@ -416,86 +426,27 @@ export default function Page() {
             </div>
           </section>
 
-          {/* Waitlist */}
-          <section id="waitlist" className="rounded-[28px] border border-white/50 bg-white/70 p-6 shadow-soft backdrop-blur md:p-8">
+          {/* Waitlist (Google Form link) */}
+          <section
+            id="waitlist"
+            className="rounded-[28px] border border-white/50 bg-white/70 p-6 shadow-soft backdrop-blur md:p-8"
+          >
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Join the waitlist</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Get early access when invites open. Optional: set{" "}
-              <code className="rounded bg-slate-100 px-1">WAITLIST_WEBHOOK_URL</code> in Vercel to save signups to your
-              backend/Zapier.
+            <p className="mt-2 text-sm text-slate-600 max-w-2xl">
+              Join the official LegalAssist early access waitlist. It takes less than a minute.
             </p>
 
-            <form action="/api/waitlist" method="POST" className="mt-6 grid gap-4 md:grid-cols-2">
-              <div>
-                <label className="text-xs font-semibold text-slate-700">Name</label>
-                <input
-                  name="name"
-                  required
-                  placeholder="Your name"
-                  className="mt-2 w-full rounded-2xl border border-white/70 bg-white/80 px-4 py-3 text-sm outline-none focus:border-ink-300 focus:bg-white"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs font-semibold text-slate-700">Email</label>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="you@email.com"
-                  className="mt-2 w-full rounded-2xl border border-white/70 bg-white/80 px-4 py-3 text-sm outline-none focus:border-ink-300 focus:bg-white"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs font-semibold text-slate-700">Role</label>
-                <select
-                  name="role"
-                  defaultValue="Lawyer"
-                  className="mt-2 w-full rounded-2xl border border-white/70 bg-white/80 px-4 py-3 text-sm outline-none focus:border-ink-300 focus:bg-white"
-                >
-                  <option>Lawyer</option>
-                  <option>Paralegal</option>
-                  <option>Law Student</option>
-                  <option>Operations</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="text-xs font-semibold text-slate-700">Firm size</label>
-                <select
-                  name="firmSize"
-                  defaultValue="1–5"
-                  className="mt-2 w-full rounded-2xl border border-white/70 bg-white/80 px-4 py-3 text-sm outline-none focus:border-ink-300 focus:bg-white"
-                >
-                  <option>1–5</option>
-                  <option>6–20</option>
-                  <option>21–100</option>
-                  <option>100+</option>
-                </select>
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="text-xs font-semibold text-slate-700">What would you use LegalAssist for first?</label>
-                <textarea
-                  name="note"
-                  rows={3}
-                  placeholder="Client intake, document generation, case strategy, document analysis..."
-                  className="mt-2 w-full rounded-2xl border border-white/70 bg-white/80 px-4 py-3 text-sm outline-none focus:border-ink-300 focus:bg-white"
-                />
-              </div>
-
-              <div className="md:col-span-2 flex flex-wrap items-center gap-3">
-                <button
-                  type="submit"
-                  className="rounded-2xl bg-gradient-to-r from-ink-600 to-ink-800 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95"
-                >
-                  Join Waitlist
-                </button>
-                <div className="text-xs text-slate-500">By joining, you agree to receive updates about LegalAssist.</div>
-              </div>
-            </form>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={WAITLIST_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl bg-gradient-to-r from-ink-600 to-ink-800 px-6 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95"
+              >
+                Join Waitlist (Google Form)
+              </a>
+              <div className="text-xs text-slate-500">No spam — just early access updates.</div>
+            </div>
 
             <div className="mt-6 rounded-2xl border border-white/60 bg-white/60 px-4 py-3 text-xs text-slate-600">
               Legal Disclaimer: LegalAssist does not provide legal advice and does not create an attorney-client relationship.
